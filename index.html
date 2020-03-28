@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Music</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+            <!-- search bar start -->
+            <div class="search_bar">
+                <span>Music</span>
+                <div class="search">
+                    <input v-model="query" @keyup.enter="searchMusic" type="text">
+                    <img src="./images/zoom.png" alt="search" @click="searchMusic">
+                </div>
+            </div>
+            <!-- search bar end -->
+
+            <!-- main content start -->
+            <div class="main_content">
+                <div class="left">
+                    <ul class="songList">
+                        <li v-for="item in songs" v-cloak>
+                            <div class="play" @click="playMusic(item.id)"></div>
+                            <span>{{item.name}}</span>
+                            <div class="mv" v-if="item.mvid !== 0" @click="playmv(item.mvid)"></div>
+                        </li>
+                    </ul>
+                    <img class="line" src="./images/line.png" alt="">
+                </div>
+                <div class="right">
+                    <h4>热门留言</h4>
+                    <ul class="commentList">
+                        <li v-cloak v-for="item in comments">
+                            <div class="user">
+                                <span class="user_name">{{item.user.nickname}}</span>
+                                <img class="avatar" :src="item.user.avatarUrl" alt="avatar">
+                            </div>
+                            <span class="comment">{{item.content}} </span>
+                        </li>
+                    </ul>
+                    <img class="line2" src="./images/line.png" alt="">
+                </div>
+                <div class="middle">
+                    <div :class="{playing:isPlay}">
+                        <img class="play_bar" src="./images/player_bar.png" alt="">
+                    </div>
+                    <div class="cover auto" :class="{active:isPlay}" :style="{backgroundImage: 'url(' + pic + ')'}">
+                    </div>
+                    <img :class="{'cover':true, 'auto':true, 'active':isPlay}" src="./images/disc.png" alt="disc">
+                </div>
+            </div>
+            <!-- main content end -->
+
+            <!-- footer start -->
+            <div class="footer">
+                <audio :src="music" controls autoplay @pause="pause" @play="play"></audio>
+            </div>
+            <!-- footer end -->
+
+            <!-- mv start -->
+            <div class="mv_con" v-cloak v-if="isplaymv">
+                <video :src="mv"  controls autoplay></video>
+                <div class="mask" @click="closemv"></div>
+            </div>
+            <!-- mv end -->
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>

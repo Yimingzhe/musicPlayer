@@ -1,0 +1,272 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+[v-cloak]{
+    display: none;
+}
+li{
+    list-style: none;
+}
+#app{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: url("../images/bg.jpg") no-repeat center;
+    background-size: cover;
+}
+.container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 85%;
+    width: 70%;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+}
+
+/* search bar start */
+.search_bar{
+    border-radius: 10px 10px 0 0;
+    height: 50px;
+    line-height: 50px;
+    background-color: #000;
+    color: #fff;
+    font-size: 26px;
+    font-weight: 700;
+}
+.search_bar span{
+    padding-left: 10px;
+}
+.search{
+    float: right;
+    padding-right: 10px;
+    position: relative;
+}
+.search img:hover{
+    cursor: pointer;
+}
+.search input{
+    position: absolute;
+    top: 8px;
+    right: 40px;
+    border: none;
+    height: 15px;
+    width: 250px;
+    border-radius: 10px;
+    padding: 10px;
+}
+/* search bar end */
+
+/* main content start */
+.main_content{
+    height: 80%;
+    overflow: hidden;
+}
+.left{
+    float: left;
+    width: 20%;
+    height: 100%;
+    padding: 10px;
+}
+.songList, .commentList{
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100%;
+}
+.songList::-webkit-scrollbar, .commentList::-webkit-scrollbar {
+    display: none;
+}
+.left li{
+    height: 36px;
+    line-height: 36px;
+    padding: 0 10px;
+    font-size: 12px;
+    color: #666;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 700;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.left li:nth-child(odd){
+    background-color: rgba(255, 255, 255, 0.3);
+}
+.left li:nth-last-child(1){
+    margin-bottom: 20px;
+}
+.play{
+    display: inline-block;
+    vertical-align: middle;
+    width: 16px;
+    height: 16px;
+    background-image: url("../images/play.png");
+    background-size: cover;
+    opacity: 0.6;
+    margin-right: 5px;
+}
+.play:hover{
+    cursor: pointer;
+    opacity: 1;
+}
+.mv{
+    float: right;
+    margin-top: 8px;
+    vertical-align: middle;
+    width: 20px;
+    height: 16px;
+    background: url(../images/table.png) left -49px no-repeat;
+}
+.mv:hover{
+    cursor: pointer;
+}
+.line{
+    position: absolute;
+    left: 20%;
+    margin-left: 30px;
+    top: 10%;
+    height: 80%;
+}
+.line2{
+    position: absolute;
+    right: 20%;
+    margin-right: 30px;
+    top: 10%;
+    height: 80%;
+}
+.right{
+    padding: 10px;
+    float: right;
+    width: 20%;
+    height: 100%;
+}
+.right h4{
+    margin-bottom: 10px;
+}
+.avatar{
+    width: 30px;
+    height: 30px;
+}
+.user{
+    height: 30px;
+    line-height: 30px;
+    vertical-align: middle;
+    overflow: hidden;
+    position: relative;
+}
+.user_name{
+    font-size: 12px;
+    font-weight: 700;
+    color: #666;
+    float: left;
+    position: absolute;
+    left: 25%;
+}
+.comment{
+    color: #333;
+    font-size: 12px;
+}
+.right li{
+    vertical-align: middle;
+    margin-bottom: 10px;
+}
+.right li:nth-last-child(1){
+    margin-bottom: 80px;
+}
+
+.middle{
+    height: 100%;
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+    text-align: center;
+    margin-top: 30px;
+    position: relative;
+}
+.disc{
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    left: 25%;
+    top: 10%;
+}
+.cover{
+    position: absolute;
+    left: 25%;
+    top: 10%;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: no-repeat center;
+    background-size: 70% 70%;
+}
+.auto{
+    animation-name: Rotate;
+    animation-iteration-count: infinite;
+    animation-play-state: paused;
+    animation-timing-function: linear;
+    animation-duration: 5s;
+}
+.active{
+    animation-play-state: running;
+}
+@keyframes Rotate{
+    0% {
+        transform: rotateZ(0);
+    }
+    100% {
+        transform: rotateZ(360deg);
+    }
+}
+.play_bar{
+    position: absolute;
+    top: -10%;
+    transform: rotate(-25deg);
+    transform-origin: 12px 12px;
+    transition: 1s;
+    z-index: 100;
+}
+.playing .play_bar{
+    transform: rotate(0);
+}
+/* main content end */
+
+/* footer start */
+.footer{
+    background-color: #f1f3f4;
+    height: 50px;
+    border-radius: 0 0 10px 10px;
+}
+.footer audio{
+box-sizing: border-box;
+width: 100%;
+padding: 0 10px;
+height: 100%;
+}
+/* footer end */
+
+/* mv start */
+.mv_con video{
+    position: fixed;
+    width: 800px;
+    height: 546px;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%);
+    margin-top: -273px;
+    z-index: 1000;
+}
+.mask {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 1110;
+    background-color: rgba(0, 0, 0, 0);
+  }
+/* mv end */
